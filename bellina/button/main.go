@@ -73,12 +73,14 @@ func tick() {
 			button.ID("btn", func() {
 				fmt.Println("wow")
 			})
-			{
-				//button.Label("SHazzy")
-				//button.OnClick(func() {
-				//	fmt.Println("click")
+
+			//button.Div("btn")
+			//{
+			//	button.Label("SHazzy")
+			//	button.OnClick(func() {
+			//		fmt.Println("click")
 				//})
-			}
+			//}
 			//button.End()
 		}
 		bl.End()
