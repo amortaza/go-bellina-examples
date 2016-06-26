@@ -15,6 +15,8 @@ import (
 	"github.com/amortaza/go-bellina-plugins/mouse-hover"
 	"github.com/amortaza/go-bellina"
 	"github.com/amortaza/go-bellina-plugins/layout/docker"
+	"github.com/amortaza/go-bellina-plugins/layout/horiz"
+	"github.com/amortaza/go-bellina-plugins/layout/vert"
 )
 
 func init_() {
@@ -29,6 +31,8 @@ func init_() {
 	bl.Plugin( button.NewPlugin() )
 	bl.Plugin( mouse_hover.NewPlugin() )
 	bl.Plugin( docker.NewPlugin() )
+	bl.Plugin( horiz.NewPlugin() )
+	bl.Plugin( vert.NewPlugin() )
 }
 
 func tick() {
@@ -52,34 +56,40 @@ func tick() {
 		{
 			bl.ID("red")
 			bl.Pos(60, 60)
-			bl.Dim(640,480)
+			bl.Dim(164,148)
 			bl.Color(.1,0,.0)
 			bl.BorderThickness([]int32{1,1,1,1})
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
-
-			bl.Div()
-			{
-				bl.ID("green")
-				bl.Pos(60, 60)
-				bl.Dim(164,148)
-				bl.Color(.0,.10,.0)
-				bl.BorderThickness([]int32{1,1,1,1})
-				bl.BorderColor(1,1,1)
-				bl.BorderTopsCanvas()
-
-				state := bl.GetPluginState("docker").(*docker.State)
-				state.AnchorRight()
-				state.AnchorTop()
-
-				bl.Use("docker")
-			}
-			bl.End()
-
-			bl.On("resize", nil)
+			bl.SetI("vert", "percent", 25)
 		}
 		bl.End()
+
+		bl.Div()
+		{
+			bl.ID("green")
+			bl.Pos(160, 160)
+			bl.Dim(164,148)
+			bl.Color(.0,.10,.0)
+			bl.BorderThickness([]int32{1,1,1,1})
+			bl.BorderColor(1,1,1)
+			bl.BorderTopsCanvas()
+
+			bl.SetI("vert", horiz.Param_Percent, -1)
+			bl.SetI("horiz", horiz.Param_Percent, -1)
+			bl.Use("resize")
+		}
+		bl.End()
+
+		//state := bl.GetPluginState("horiz").(*docker.State)
+		//state.AnchorRight()
+		//state.AnchorTop()
+
+		bl.Use("vert")
+		bl.Use("horiz")
+
+		//bl.On("resize", nil)
 	}
 	bl.End()
 }
