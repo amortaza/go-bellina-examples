@@ -38,7 +38,7 @@ func onLoop() {
 func onAfterGL() {
 	g4.Init()
 
-	f := g4.LoadTrueTypeFromFile("assets/fonts/arial.ttf")
+	f := g4.LoadTrueTypeFromFile("github.com/amortaza/go-bellina-examples/assets/fonts/arial.ttf")
 	arial18 = g4.NewG4Font(f, 8)
 	str1 = g4.NewStringTexture("Welcome to Clown World!", arial18)
 	canvas = g4.NewCanvas(320,100)

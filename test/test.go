@@ -1,13 +1,18 @@
 package main
 
 import (
-	"time"
-	//"runtime"
+	"fmt"
 )
 
-func main() {
-	for {
-		time.Sleep(1)
-		//runtime.GC()
+func foo(s string) func() string {
+	return func() string {
+		return s
 	}
+}
+func main() {
+	cb1 := foo("one")
+	cb2 := foo("two")
+
+	fmt.Println(cb1())
+	fmt.Println(cb2())
 }

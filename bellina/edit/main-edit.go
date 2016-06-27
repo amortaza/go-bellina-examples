@@ -14,10 +14,6 @@ import (
 	"github.com/amortaza/go-basic-widgets/simple/button"
 	"github.com/amortaza/go-bellina-plugins/mouse-hover"
 	"github.com/amortaza/go-bellina"
-	"github.com/amortaza/go-bellina-plugins/layout/docker"
-	"github.com/amortaza/go-bellina-plugins/layout/horiz"
-	"github.com/amortaza/go-bellina-plugins/layout/vert"
-	"github.com/amortaza/go-bellina-plugins/layout/pad"
 )
 
 func init_() {
@@ -31,18 +27,15 @@ func init_() {
 	bl.Plugin( zindex.NewPlugin() )
 	bl.Plugin( button.NewPlugin() )
 	bl.Plugin( mouse_hover.NewPlugin() )
-	bl.Plugin( docker.NewPlugin() )
-	bl.Plugin( horiz.NewPlugin() )
-	bl.Plugin( vert.NewPlugin() )
-	bl.Plugin( pad.NewPlugin() )
 }
 
 func tick() {
+
 	bl.Root()
 	{
 		bl.Pos(64,64)
 		bl.Dim(800,600)
-		bl.Color(.3,.5,.5)
+		bl.Color(.1,.1,.5)
 		bl.Flag(bl.Z_COLOR_SOLID | bl.Z_BORDER_ALL)
 
 		bl.Font("arial", 6)
@@ -57,40 +50,30 @@ func tick() {
 		{
 			bl.ID("red")
 			bl.Pos(60, 60)
-			bl.Dim(164,148)
+			bl.Dim(320,240)
 			bl.Color(.1,0,.0)
 			bl.BorderThickness([]int32{1,1,1,1})
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
-			//bl.SetI("vert", "percent", 25)
+			edit.Div("one")
+			{
+				edit.Pos(10, 10)
+				edit.Size(8)
+				//edit.Padding(10, 10, 20)
+			}
+			edit.End()
+
+			edit.Div("two")
+			{
+				edit.Pos(10, 170)
+				edit.Size(14)
+				edit.Width(200)
+			}
+			edit.End()
+
 		}
 		bl.End()
-
-		bl.Div()
-		{
-			bl.ID("green")
-			bl.Pos(160, 160)
-			bl.Dim(664,148)
-			bl.Color(.0,.10,.0)
-			bl.BorderThickness([]int32{1,1,1,1})
-			bl.BorderColor(1,1,1)
-			bl.BorderTopsCanvas()
-
-			//bl.SetI("vert", horiz.Param_Percent, -1)
-			//bl.SetI("horiz", horiz.Param_Percent, -1)
-			bl.Use("resize")
-		}
-		bl.End()
-
-		pad.SetPaddingAll(50)
-		//bl.SetI("pad", horiz.Param_All, 20)
-
-		//bl.Use("vert")
-		bl.Use("horiz")
-		bl.Use("pad")
-
-		//bl.On("resize", nil)
 	}
 	bl.End()
 }

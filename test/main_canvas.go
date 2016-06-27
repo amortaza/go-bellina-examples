@@ -45,13 +45,13 @@ func onLoop() {
 func onAfterGL() {
 	g4.Init()
 
-	arial18 = g4.NewG4Font("assets/fonts/arial.ttf", 18)
+	arial18 = g4.NewG4Font("github.com/amortaza/go-bellina-examples/assets/fonts/arial.ttf", 18)
 
 	troll = g4.NewTexture()
-	troll.LoadImage("assets/images/troll2.png")
+	troll.LoadImage("github.com/amortaza/go-bellina-examples/assets/images/troll2.png")
 
 	box = g4.NewTexture()
-	box.LoadImage("assets/images/crate.png")
+	box.LoadImage("github.com/amortaza/go-bellina-examples/assets/images/crate.png")
 
 	str1 = g4.NewStringTexture("Welcome    to Clown World!", arial18)
 	str2 = g4.NewStringTexture("to Clown World!", arial18)
