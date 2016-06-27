@@ -61,6 +61,7 @@ func tick() {
 				edit.Pos(10, 10)
 				edit.Size(8)
 				//edit.Padding(10, 10, 20)
+				edit.Extend(250)
 			}
 			edit.End()
 
