@@ -12,7 +12,7 @@ import (
 	"github.com/amortaza/go-bellina-plugins/edit"
 	"github.com/amortaza/go-bellina-plugins/zindex"
 	"github.com/amortaza/go-basic-widgets/simple/button"
-	"github.com/amortaza/go-bellina-plugins/mouse-hover"
+	"github.com/amortaza/go-bellina-plugins/hover"
 	"github.com/amortaza/go-bellina"
 )
 

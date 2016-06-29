@@ -9,12 +9,12 @@ import (
 	"github.com/amortaza/go-bellina-plugins/drag"
 	"github.com/amortaza/go-bellina-plugins/resize"
 	"github.com/amortaza/go-bellina-plugins/focus"
-	"github.com/amortaza/go-basic-widgets/simple/edit"
 	"github.com/amortaza/go-bellina-plugins/zindex"
-	"github.com/amortaza/go-basic-widgets/simple/button"
+	"github.com/amortaza/go-basic-widgets/button"
 	"github.com/amortaza/go-bellina-plugins/hover"
 	"github.com/amortaza/go-bellina"
-	"github.com/amortaza/go-bellina-plugins/animation"
+	"github.com/amortaza/go-bellina-plugins/layout/docker"
+	"github.com/amortaza/go-basic-widgets/edit"
 )
 
 func init_() {
@@ -28,7 +28,7 @@ func init_() {
 	bl.Plugin( zindex.NewPlugin() )
 	bl.Plugin( button.NewPlugin() )
 	bl.Plugin( mouse_hover.NewPlugin() )
-	bl.Plugin( animation.NewPlugin() )
+	bl.Plugin( docker.NewPlugin() )
 }
 
 func tick() {
@@ -37,7 +37,7 @@ func tick() {
 	{
 		bl.Pos(64,64)
 		bl.Dim(800,600)
-		bl.Color(.1,.1,.5)
+		bl.Color(.3,.5,.5)
 		bl.Flag(bl.Z_COLOR_SOLID | bl.Z_BORDER_ALL)
 
 		bl.Font("arial", 6)
@@ -52,27 +52,28 @@ func tick() {
 		{
 			bl.ID("red")
 			bl.Pos(60, 60)
-			bl.Dim(160,120)
+			bl.Dim(640,480)
 			bl.Color(.1,0,.0)
 			bl.BorderThickness([]int32{1,1,1,1})
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
-			nodeId := bl.Current_Node.Id
+			bl.Div()
+			{
+				bl.ID("green")
+				bl.Pos(60, 60)
+				bl.Dim(164,148)
+				bl.Color(.0,.10,.0)
+				bl.BorderThickness([]int32{1,1,1,1})
+				bl.BorderColor(1,1,1)
+				bl.BorderTopsCanvas()
 
-			bl.On("click", func(interface{}) {
-				animation.StartPath(nodeId, "one", 100, 600, 60, "linear", func(shadow *bl.ShadowNode, value float32) {
-					shadow.Left = int32( value)
-				})
+				docker.AnchorRight()
+				docker.Use()
+			}
+			bl.End()
 
-				animation.StartPath(nodeId, "two", 1, .05, 50, "linear", func(shadow *bl.ShadowNode, value float32) {
-					shadow.NodeOpacity = []float32{value,value,value,value}
-				})
-			})
-
-			shadow := bl.EnsureShadow()
-			bl.Current_Node.Left = shadow.Left
-			bl.Current_Node.NodeOpacity = shadow.NodeOpacity
+			resize.Use()
 		}
 		bl.End()
 	}
