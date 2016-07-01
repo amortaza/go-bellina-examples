@@ -3,22 +3,16 @@ package main
 import (
 	"runtime"
 	"fmt"
-	"github.com/amortaza/go-bellina-plugins/click"
-	"github.com/amortaza/go-bellina-plugins/double-click"
-	"github.com/amortaza/go-bellina-plugins/mouse-drag"
-	"github.com/amortaza/go-bellina-plugins/drag"
-	"github.com/amortaza/go-bellina-plugins/resize"
-	"github.com/amortaza/go-bellina-plugins/focus"
-	"github.com/amortaza/go-bellina-plugins/zindex"
 	"github.com/amortaza/go-bellina"
-	"github.com/amortaza/go-bellina-plugins/animation"
 	"github.com/amortaza/go-basic-widgets/vscroll"
 	"github.com/amortaza/go-basic-widgets/hscroll"
 	"github.com/amortaza/go-bellina-plugins/layout/docker"
+	"strconv"
 )
 
 func init_() {
 }
+var pcts = ""
 
 func tick() {
 
@@ -34,7 +28,7 @@ func tick() {
 		bl.FontNudge(3,3)
 		bl.Label("Hello world")
 
-		bl.BorderThickness([]int32{2,2,2,2})
+		bl.BorderThickness(bl.FourTwosInt)
 		bl.BorderColor(1,1,1)
 
 		bl.Div()
@@ -43,15 +37,21 @@ func tick() {
 			bl.Pos(60, 60)
 			bl.Dim(640,480)
 			bl.Color(0,0,0)
-			bl.BorderThickness([]int32{1,1,1,1})
+			bl.BorderThickness(bl.FourOnesInt)
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
+			bl.Font("arial", 78)
+			bl.FontColor(.51,.51,0)
+			bl.FontNudge(50,50)
+			bl.Label(pcts)
+
 			hscroll.SetThickness(40)
 			hscroll.On(func(v interface{}) {
-				//e := v.(*hscroll.Event)
+				e := v.(*hscroll.Event)
 
 				//fmt.Println(e.PercentStart, e.PercentEnd)
+				pcts = strconv.Itoa(int(e.PercentStart * 100))
 			})
 
 
@@ -73,7 +73,8 @@ func tick() {
 			vscroll.On(func(v interface{}) {
 				e := v.(*vscroll.Event)
 
-				fmt.Println(e.PercentStart, e.PercentEnd)
+				//fmt.Println(e.PercentStart, e.PercentEnd)
+				pcts = strconv.Itoa(int(e.PercentStart * 100))
 			})
 
 			vscroll.Div("two")

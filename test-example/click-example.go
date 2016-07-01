@@ -32,8 +32,12 @@ func tick() {
 			bl.BorderTopsCanvas()
 			bl.Flag(bl.Z_COLOR_SOLID | bl.Z_BORDER_ALL)
 
-			click.On(func(interface{}) {
+			click.On2(func(interface{}) {
 			     fmt.Println("click")
+			}, func(interface{}) {
+			     fmt.Println("down")
+			}, func(interface{}) {
+			     fmt.Println("miss")
 			})
 
 			bl.Div()
