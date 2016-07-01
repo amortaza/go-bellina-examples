@@ -16,14 +16,6 @@ import (
 )
 
 func init_() {
-	bl.Plugin( click.NewPlugin() )
-	bl.Plugin( double_click.NewPlugin(1000) )
-	bl.Plugin( mouse_drag.NewPlugin() )
-	bl.Plugin( drag.NewPlugin() )
-	bl.Plugin( resize.NewPlugin() )
-	bl.Plugin( focus.NewPlugin() )
-	bl.Plugin( zindex.NewPlugin() )
-	bl.Plugin( animation.NewPlugin() )
 }
 
 func tick() {
@@ -45,7 +37,7 @@ func tick() {
 
 		bl.Div()
 		{
-			bl.ID("black")
+			bl.Id("black")
 			bl.Pos(60, 60)
 			bl.Dim(360,360)
 			bl.Color(0,0,0)
@@ -55,7 +47,7 @@ func tick() {
 
 			bl.Div()
 			{
-				bl.ID("green")
+				bl.Id("green")
 				bl.Pos(10, 10)
 				bl.Dim(60,60)
 				bl.Color(.0,.1,.0)
@@ -67,7 +59,7 @@ func tick() {
 
 			bl.Div()
 			{
-				bl.ID("blue")
+				bl.Id("blue")
 				bl.Pos(160, 160)
 				bl.Dim(60,60)
 				bl.Color(0,0,.5)
@@ -83,7 +75,7 @@ func tick() {
 
 		bl.Div()
 		{
-			bl.ID("black2")
+			bl.Id("black2")
 			bl.Pos(260, 260)
 			bl.Dim(360,360)
 			bl.Color(0,0,0)
@@ -93,7 +85,7 @@ func tick() {
 
 			bl.Div()
 			{
-				bl.ID("green2")
+				bl.Id("green2")
 				bl.Pos(10, 10)
 				bl.Dim(60,60)
 				bl.Color(.0,.1,.0)
@@ -105,7 +97,7 @@ func tick() {
 
 			bl.Div()
 			{
-				bl.ID("blue2")
+				bl.Id("blue2")
 				bl.Pos(160, 160)
 				bl.Dim(60,60)
 				bl.Color(0,0,.5)
@@ -118,6 +110,8 @@ func tick() {
 			hsplit.Use()
 		}
 		bl.End()
+
+		resize.Use()
 	}
 	bl.End()
 }

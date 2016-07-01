@@ -9,26 +9,12 @@ import (
 	"github.com/amortaza/go-bellina-plugins/drag"
 	"github.com/amortaza/go-bellina-plugins/resize"
 	"github.com/amortaza/go-bellina-plugins/focus"
-	"github.com/amortaza/go-basic-widgets/simple/edit"
 	"github.com/amortaza/go-bellina-plugins/zindex"
-	"github.com/amortaza/go-basic-widgets/simple/button"
-	"github.com/amortaza/go-bellina-plugins/hover"
 	"github.com/amortaza/go-bellina"
 	"github.com/amortaza/go-bellina-plugins/animation"
 )
 
 func init_() {
-	bl.Plugin( click.NewPlugin() )
-	bl.Plugin( double_click.NewPlugin(1000) )
-	bl.Plugin( mouse_drag.NewPlugin() )
-	bl.Plugin( drag.NewPlugin() )
-	bl.Plugin( resize.NewPlugin() )
-	bl.Plugin( focus.NewPlugin() )
-	bl.Plugin( edit.NewPlugin() )
-	bl.Plugin( zindex.NewPlugin() )
-	bl.Plugin( button.NewPlugin() )
-	bl.Plugin( mouse_hover.NewPlugin() )
-	bl.Plugin( animation.NewPlugin() )
 }
 
 func tick() {
@@ -50,7 +36,7 @@ func tick() {
 
 		bl.Div()
 		{
-			bl.ID("red")
+			bl.Id("red")
 			bl.Pos(60, 60)
 			bl.Dim(160,120)
 			bl.Color(.1,0,.0)
@@ -60,9 +46,10 @@ func tick() {
 
 			nodeId := bl.Current_Node.Id
 
-			bl.On("click", func(interface{}) {
+			click.On(func(interface{}) {
 				animation.StartPath(nodeId, "one", 100, 600, 60, "linear", func(shadow *bl.ShadowNode, value float32) {
 					shadow.Left = int32( value)
+					shadow.Top++
 				})
 
 				animation.StartPath(nodeId, "two", 1, .05, 50, "linear", func(shadow *bl.ShadowNode, value float32) {
@@ -72,6 +59,7 @@ func tick() {
 
 			shadow := bl.EnsureShadow()
 			bl.Current_Node.Left = shadow.Left
+			bl.Current_Node.Top = shadow.Top
 			bl.Current_Node.NodeOpacity = shadow.NodeOpacity
 		}
 		bl.End()

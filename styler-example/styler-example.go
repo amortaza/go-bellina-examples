@@ -16,15 +16,6 @@ import (
 )
 
 func init_() {
-	bl.Plugin( click.NewPlugin() )
-	bl.Plugin( double_click.NewPlugin(1000) )
-	bl.Plugin( mouse_drag.NewPlugin() )
-	bl.Plugin( drag.NewPlugin() )
-	bl.Plugin( resize.NewPlugin() )
-	bl.Plugin( focus.NewPlugin() )
-	bl.Plugin( zindex.NewPlugin() )
-	bl.Plugin( animation.NewPlugin() )
-	bl.Plugin( hover.NewPlugin() )
 }
 
 func tick() {
@@ -46,7 +37,7 @@ func tick() {
 
 		bl.Div()
 		{
-			bl.ID("black2")
+			bl.Id("black2")
 			bl.Pos(160, 160)
 			bl.Dim(360,360)
 			bl.Color(0,0,0)
@@ -70,7 +61,7 @@ func tick() {
 				}
 			} )
 
-			bl.EnsureShadow().Color1_To_Node().FontColor_To_Node()
+			bl.EnsureShadow().Color1_to_Node().FontColor_to_Node()
 		}
 		bl.End()
 	}

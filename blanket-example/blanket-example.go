@@ -10,13 +10,10 @@ import (
 	"github.com/amortaza/go-bellina-plugins/resize"
 	"github.com/amortaza/go-bellina-plugins/focus"
 	"github.com/amortaza/go-bellina-plugins/zindex"
-	"github.com/amortaza/go-basic-widgets/edit"
-	"github.com/amortaza/go-basic-widgets/button"
 	"github.com/amortaza/go-bellina"
-	"github.com/amortaza/go-bellina-plugins/layout/docker"
-	"github.com/amortaza/go-bellina-plugins/layout/horiz"
-	"github.com/amortaza/go-bellina-plugins/layout/vert"
+	"github.com/amortaza/go-bellina-plugins/animation"
 	"github.com/amortaza/go-bellina-plugins/hover"
+	"github.com/amortaza/go-basic-widgets/blanket"
 )
 
 func init_() {
@@ -28,7 +25,7 @@ func tick() {
 	{
 		bl.Pos(64,64)
 		bl.Dim(800,600)
-		bl.Color(.3,.5,.5)
+		bl.Color(.1,.1,.1)
 		bl.Flag(bl.Z_COLOR_SOLID | bl.Z_BORDER_ALL)
 
 		bl.Font("arial", 6)
@@ -41,36 +38,27 @@ func tick() {
 
 		bl.Div()
 		{
-			bl.Id("red")
-			bl.Pos(60, 60)
-			bl.Dim(164,148)
-			bl.Color(.1,0,.0)
+			bl.Id("black2")
+			bl.Pos(160, 160)
+			bl.Dim(360,360)
+			bl.Color(0,0,0)
 			bl.BorderThickness([]int32{1,1,1,1})
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
-			vert.SetPercent(25)
-		}
-		bl.End()
+			bl.Font("arial", 12)
+			bl.FontColor(1,1,1)
+			bl.FontNudge(3,3)
+			bl.Label("Hello world")
 
-		bl.Div()
-		{
-			bl.Id("green")
-			bl.Pos(60, 60)
-			bl.Dim(164,148)
-			bl.Color(.0,.10,.0)
-			bl.BorderThickness([]int32{1,1,1,1})
-			bl.BorderColor(1,1,1)
-			bl.BorderTopsCanvas()
-
-			vert.FillRemaining()
-
+			blanket.Id("cool").Use()
+			blanket.Div()
+			bl.Color(.1,.1,0)
+			bl.NodeOpacity1f(1)
+			blanket.End()
 			resize.Use()
 		}
 		bl.End()
-
-		vert.SetSpacing(20)
-		vert.Use()
 	}
 	bl.End()
 }

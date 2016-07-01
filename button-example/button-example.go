@@ -17,16 +17,6 @@ import (
 )
 
 func init_() {
-	bl.Plugin( click.NewPlugin() )
-	bl.Plugin( double_click.NewPlugin(1000) )
-	bl.Plugin( mouse_drag.NewPlugin() )
-	bl.Plugin( drag.NewPlugin() )
-	bl.Plugin( resize.NewPlugin() )
-	bl.Plugin( focus.NewPlugin() )
-	bl.Plugin( edit.NewPlugin() )
-	bl.Plugin( zindex.NewPlugin() )
-	bl.Plugin( button.NewPlugin() )
-	bl.Plugin( mouse_hover.NewPlugin() )
 }
 
 func tick() {
@@ -55,7 +45,7 @@ func tick() {
 
 		bl.Div()
 		{
-			bl.ID("red")
+			bl.Id("red")
 			bl.Pos(60, 60)
 			bl.Dim(164,148)
 			bl.Color(.1,0,.0)
