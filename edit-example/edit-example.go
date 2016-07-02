@@ -3,15 +3,8 @@ package main
 import (
 	"runtime"
 	"fmt"
-	"github.com/amortaza/go-bellina-plugins/click"
-	"github.com/amortaza/go-bellina-plugins/double-click"
-	"github.com/amortaza/go-bellina-plugins/mouse-drag"
 	"github.com/amortaza/go-bellina-plugins/drag"
-	"github.com/amortaza/go-bellina-plugins/resize"
-	"github.com/amortaza/go-bellina-plugins/focus"
 	"github.com/amortaza/go-basic-widgets/edit"
-	"github.com/amortaza/go-bellina-plugins/zindex"
-	"github.com/amortaza/go-basic-widgets/button"
 	"github.com/amortaza/go-bellina"
 )
 
@@ -32,7 +25,7 @@ func tick() {
 		bl.FontNudge(3,3)
 		bl.Label("Hello world")
 
-		bl.BorderThickness([]int32{2,2,2,2})
+		bl.BorderThickness(bl.FourTwosInt)
 		bl.BorderColor(1,1,1)
 
 		bl.Div()
@@ -41,26 +34,30 @@ func tick() {
 			bl.Pos(60, 60)
 			bl.Dim(320,240)
 			bl.Color(.1,0,.0)
-			bl.BorderThickness([]int32{1,1,1,1})
+			bl.BorderThickness(bl.FourOnesInt)
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
-			edit.Div("one")
-			{
-				edit.Pos(10, 10)
-				edit.Size(8)
-				//edit.Padding(10, 10, 20)
-				edit.Extend(250)
-			}
-			edit.End()
+			edit.Id("zero").On()
 
-			edit.Div("two")
-			{
-				edit.Pos(10, 170)
-				edit.Size(14)
-				edit.Width(200)
-			}
-			edit.End()
+			//edit.Id("one")
+			//edit.Div()
+			//{
+				//edit.Pos(10, 10)
+				//edit.Size(8)
+				//edit.Padding(10, 10, 20)
+				//edit.Extend(250)
+			//}
+			//edit.End()
+
+			//edit.Id("two")
+			//edit.Div()
+			//{
+				//edit.Pos(10, 170)
+				//edit.Size(14)
+				//edit.Width(200)
+			//}
+			//edit.End()
 
 			drag.On(nil)
 		}

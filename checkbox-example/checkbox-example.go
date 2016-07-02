@@ -43,7 +43,8 @@ func tick() {
 			bl.Label("Hello world")
 
 
-			checkbox.Id("one").SetLabel("Sweet").On(nil)
+			checkbox.Id("one").On(nil)
+			//SetLabel("Sweet").On(nil)
 		}
 		bl.End()
 	}

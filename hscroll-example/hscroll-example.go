@@ -46,8 +46,7 @@ func tick() {
 			bl.FontNudge(50,50)
 			bl.Label(pcts)
 
-			hscroll.SetThickness(40)
-			hscroll.On(func(v interface{}) {
+			hscroll.Id("one").Thickness(40).On(func(v interface{}) {
 				e := v.(*hscroll.Event)
 
 				//fmt.Println(e.PercentStart, e.PercentEnd)
@@ -55,7 +54,7 @@ func tick() {
 			})
 
 
-			hscroll.Div("one")
+			hscroll.Div()
 			{
 				if bl.Current_Node == nil {
 					fmt.Println("we are nil")
@@ -69,15 +68,14 @@ func tick() {
 			}
 			hscroll.End()
 
-			vscroll.SetThickness(40)
-			vscroll.On(func(v interface{}) {
+			vscroll.Id("two").Thickness(40).On(func(v interface{}) {
 				e := v.(*vscroll.Event)
 
 				//fmt.Println(e.PercentStart, e.PercentEnd)
 				pcts = strconv.Itoa(int(e.PercentStart * 100))
 			})
 
-			vscroll.Div("two")
+			vscroll.Div()
 			{
 				docker.AnchorRight()
 				docker.AnchorTop()

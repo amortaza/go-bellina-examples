@@ -3,15 +3,8 @@ package main
 import (
 	"runtime"
 	"fmt"
-	"github.com/amortaza/go-bellina-plugins/click"
-	"github.com/amortaza/go-bellina-plugins/double-click"
-	"github.com/amortaza/go-bellina-plugins/mouse-drag"
-	"github.com/amortaza/go-bellina-plugins/drag"
 	"github.com/amortaza/go-bellina-plugins/resize"
-	"github.com/amortaza/go-bellina-plugins/focus"
-	"github.com/amortaza/go-bellina-plugins/zindex"
 	"github.com/amortaza/go-bellina"
-	"github.com/amortaza/go-bellina-plugins/animation"
 	"github.com/amortaza/go-basic-widgets/hsplit"
 )
 
@@ -32,7 +25,7 @@ func tick() {
 		bl.FontNudge(3,3)
 		bl.Label("Hello world")
 
-		bl.BorderThickness([]int32{2,2,2,2})
+		bl.BorderThickness(bl.FourTwosInt)
 		bl.BorderColor(1,1,1)
 
 		bl.Div()
@@ -41,7 +34,7 @@ func tick() {
 			bl.Pos(60, 60)
 			bl.Dim(360,360)
 			bl.Color(0,0,0)
-			bl.BorderThickness([]int32{1,1,1,1})
+			bl.BorderThickness(bl.FourOnesInt)
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
@@ -51,7 +44,7 @@ func tick() {
 				bl.Pos(10, 10)
 				bl.Dim(60,60)
 				bl.Color(.0,.1,.0)
-				bl.BorderThickness([]int32{1,1,1,1})
+				bl.BorderThickness(bl.FourOnesInt)
 				bl.BorderColor(1,1,1)
 				bl.BorderTopsCanvas()
 			}
@@ -63,13 +56,13 @@ func tick() {
 				bl.Pos(160, 160)
 				bl.Dim(60,60)
 				bl.Color(0,0,.5)
-				bl.BorderThickness([]int32{1,1,1,1})
+				bl.BorderThickness(bl.FourOnesInt)
 				bl.BorderColor(1,1,1)
 				bl.BorderTopsCanvas()
 			}
 			bl.End()
 
-			hsplit.Use()
+			hsplit.Use("cool2")
 		}
 		bl.End()
 
@@ -79,7 +72,7 @@ func tick() {
 			bl.Pos(260, 260)
 			bl.Dim(360,360)
 			bl.Color(0,0,0)
-			bl.BorderThickness([]int32{1,1,1,1})
+			bl.BorderThickness(bl.FourOnesInt)
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
@@ -89,7 +82,7 @@ func tick() {
 				bl.Pos(10, 10)
 				bl.Dim(60,60)
 				bl.Color(.0,.1,.0)
-				bl.BorderThickness([]int32{1,1,1,1})
+				bl.BorderThickness(bl.FourOnesInt)
 				bl.BorderColor(1,1,1)
 				bl.BorderTopsCanvas()
 			}
@@ -101,13 +94,13 @@ func tick() {
 				bl.Pos(160, 160)
 				bl.Dim(60,60)
 				bl.Color(0,0,.5)
-				bl.BorderThickness([]int32{1,1,1,1})
+				bl.BorderThickness(bl.FourOnesInt)
 				bl.BorderColor(1,1,1)
 				bl.BorderTopsCanvas()
 			}
 			bl.End()
 
-			hsplit.Use()
+			hsplit.Use("cool")
 		}
 		bl.End()
 

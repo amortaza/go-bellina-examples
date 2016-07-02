@@ -3,16 +3,7 @@ package main
 import (
 	"runtime"
 	"fmt"
-	"github.com/amortaza/go-bellina-plugins/click"
-	"github.com/amortaza/go-bellina-plugins/double-click"
-	"github.com/amortaza/go-bellina-plugins/mouse-drag"
-	"github.com/amortaza/go-bellina-plugins/drag"
-	"github.com/amortaza/go-bellina-plugins/resize"
-	"github.com/amortaza/go-bellina-plugins/focus"
-	"github.com/amortaza/go-bellina-plugins/edit"
-	"github.com/amortaza/go-bellina-plugins/zindex"
-	"github.com/amortaza/go-basic-widgets/simple/button"
-	"github.com/amortaza/go-bellina-plugins/hover"
+	"github.com/amortaza/go-basic-widgets/button"
 	"github.com/amortaza/go-bellina"
 )
 
@@ -33,15 +24,8 @@ func tick() {
 		bl.FontNudge(3,3)
 		bl.Label("Hello world")
 
-		bl.BorderThickness([]int32{2,2,2,2})
+		bl.BorderThickness(bl.FourTwosInt)
 		bl.BorderColor(1,1,1)
-
-		bl.On("hover", func(i interface{}){
-			e := i.(*mouse_hover.Event)
-
-			if e.IsInEvent {
-			}
-		})
 
 		bl.Div()
 		{
@@ -49,18 +33,11 @@ func tick() {
 			bl.Pos(60, 60)
 			bl.Dim(164,148)
 			bl.Color(.1,0,.0)
-			bl.BorderThickness([]int32{1,1,1,1})
+			bl.BorderThickness(bl.FourOnesInt)
 			bl.BorderColor(1,1,1)
 			bl.BorderTopsCanvas()
 
-			bl.On("hover", func(i interface{}){
-				e := i.(*mouse_hover.Event)
-
-				if e.IsInEvent {
-				}
-			})
-
-			button.ID("btn", func() {
+			button.Id("btn").Label("OK").On(func(interface{}) {
 				fmt.Println("wow")
 			})
 
